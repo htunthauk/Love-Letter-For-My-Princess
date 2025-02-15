@@ -1,0 +1,103 @@
+<!-- index.html -->
+<!DOCTYPE html>
+<html lang="en">
+ 
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Love Theme</title>
+    <style>
+        body {
+            background-color: pink;
+            background-image: url('hearts-background.png');
+            background-size: cover;
+            background-position: center;
+            height: 100vh;
+            display: flex;
+            justify-content: center;
+            align-items: center;
+            flex-direction: column;
+            overflow: hidden;
+        }
+        .heart {
+            position: absolute;
+            width: 50px;
+            height: 50px;
+            background-color: red;
+            clip-path: polygon(50% 15%, 100% 40%, 80% 100%, 50% 80%, 20% 100%, 0% 40%);
+            opacity: 0.7;
+            animation: float 5s infinite ease-in-out;
+        }
+        @keyframes float {
+            0% { transform: translateY(0) scale(1); }
+            50% { transform: translateY(-50px) scale(1.1); }
+            100% { transform: translateY(0) scale(1); }
+        }
+        .text {
+            font-size: 28px;
+            font-weight: bold;
+            color: white;
+            margin-bottom: 20px;
+            text-shadow: 3px 3px 6px rgba(0, 0, 0, 0.3);
+            animation: glow 1.5s infinite alternate;
+        }
+        @keyframes glow {
+            from { text-shadow: 3px 3px 6px rgba(255, 100, 100, 0.6); }
+            to { text-shadow: 5px 5px 12px rgba(255, 50, 50, 1); }
+        }
+        button {
+            background-color: #ff4d6d;
+            color: white;
+            padding: 20px 50px;
+            border: none;
+            cursor: pointer;
+            font-size: 28px;
+            font-weight: bold;
+            border-radius: 50px;
+            box-shadow: 0px 6px 12px rgba(0, 0, 0, 0.3);
+            transition: transform 0.3s ease-in-out, background-color 0.3s;
+            position: relative;
+            overflow: hidden;
+        }
+        button::before {
+            content: "";
+            position: absolute;
+            top: 0;
+            left: -100%;
+            width: 100%;
+            height: 100%;
+            background: rgba(255, 255, 255, 0.3);
+            transition: left 0.5s;
+        }
+        button:hover::before {
+            left: 100%;
+        }
+        button:hover {
+            transform: scale(1.15);
+            background-color: #ff1e4d;
+        }
+    </style>
+</head>
+<body>
+    <script>
+        function createHearts() {
+            for (let i = 0; i < 15; i++) {
+                let heart = document.createElement('div');
+                heart.classList.add('heart');
+                heart.style.left = Math.random() * window.innerWidth + 'px';
+                heart.style.top = Math.random() * window.innerHeight + 'px';
+                heart.style.animationDuration = (Math.random() * 3 + 2) + 's';
+                document.body.appendChild(heart);
+            }
+        }
+        createHearts();
+        function redirectToLoveLetter() {
+            window.location.href = 'LoveLetter.html';
+        }
+    </script>
+    <div class="text">"My Love, Follow the Path of My Heart" 💖</div>
+    <button onclick="redirectToLoveLetter()">💌</button>
+
+    
+</body>
+</html>
